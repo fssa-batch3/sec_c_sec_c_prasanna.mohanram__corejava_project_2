@@ -1,0 +1,8 @@
+-------------------------------------------------------------------------------
+Test set: com.fssa.bikerzzone.testvalidator.TestBikeValidator
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.137 s <<< FAILURE! - in com.fssa.bikerzzone.testvalidator.TestBikeValidator
+testValidate  Time elapsed: 0.11 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <true> but was: <false>
+	at com.fssa.bikerzzone.testvalidator.TestBikeValidator.testValidate(TestBikeValidator.java:15)
+
