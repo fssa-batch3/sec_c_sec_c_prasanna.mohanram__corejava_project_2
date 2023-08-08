@@ -28,14 +28,14 @@ public class ConnectionUtil {
 			con = DriverManager.getConnection(url, userName, passWord);
 			System.out.println("connection created");
 		} catch (Exception e) {
-			e.printStackTrace();
+			e.getMessage();
 			throw new RuntimeException("Unable to connect to the database");
 		}
 		return con;
 	}
-	
+
 	public static void main(String[] args) {
 		ConnectionUtil.getConnection();
 	}
-	
+
 }
