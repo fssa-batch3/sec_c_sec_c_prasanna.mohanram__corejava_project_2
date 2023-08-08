@@ -14,7 +14,7 @@ public class TestBikeService {
 
 	@Test
 	public void testAddBike() throws Exception, DAOException {
-		Bike bike = new Bike(1, "Yamaha", "R15 V2", 100000, "FIRST", "Chennai", LocalDate.of(1998, 9, 05));
+		Bike bike = new Bike(1, "Yamaha", "R1", 100000, "FIRST", "Chennai", LocalDate.of(1998, 9, 05));
 
 		if (BikeValidator.validate(bike)) {
 			BikeDao.addBike(bike);
