@@ -6,14 +6,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDate;
-//import java.util.logging.Logger;
 
 import com.fssa.bikerzzone.model.Bike;
 import com.fssa.bikerzzone.validator.BikeValidator;
 
 public class BikeDao {
-
-//	public static final Logger LOGGER = Logger.getLogger(BikeDao.class.getName());
 
 	public static boolean addBike(Bike bike) throws Exception {
 		BikeValidator.validate(bike);
@@ -39,23 +36,14 @@ public class BikeDao {
 
 		try (Connection connection = ConnectionUtil.getConnection()) {
 			String query = "SELECT * FROM bike WHERE brand = ?";
+
 			try (PreparedStatement pst = connection.prepareStatement(query)) {
+
 				pst.setString(1, brand);
 
 				try (ResultSet resultSet = pst.executeQuery()) {
+
 					while (resultSet.next()) {
-//						bike = new bike();
-//						bike.setName(resultSet.getString("name"));
-//						bike.setSymbol(resultSet.getString("symbol"));
-//						bike.setRank(resultSet.getInt("ranking"));
-//						bike.setPrice(resultSet.getDouble("price"));
-//						bike.setMarketCap(resultSet.getDouble("market_cap"));
-//						bike.setTotalSupply(resultSet.getDouble("total_supply"));
-//						bike.setMaximumSupply(resultSet.getDouble("maximum_supply"));
-//						bike.setVolume24h(resultSet.getDouble("volume_24h"));
-//						bike.setAllTimeHigh(resultSet.getDouble("all_time_high"));
-//						bike.setAllTimeLow(resultSet.getDouble("all_time_low"));
-//						bike.setCreationDate(resultSet.getDate("creationdate").toLocalDate());
 
 						System.out.println("id: " + resultSet.getInt(1));
 						System.out.println("Brand: " + resultSet.getString(2));
@@ -80,9 +68,13 @@ public class BikeDao {
 
 		try (Connection connection = ConnectionUtil.getConnection()) {
 			String query = "SELECT * FROM bike";
+
 			try (Statement statement = connection.createStatement()) {
+
 				try (ResultSet rs = statement.executeQuery(query)) {
+
 					while (rs.next()) {
+
 						System.out.println("id: " + rs.getInt(1));
 						System.out.println("brand: " + rs.getString(2));
 						System.out.println("model: " + rs.getString(3));
@@ -104,11 +96,12 @@ public class BikeDao {
 	}
 
 	public static boolean updateBike(String brand, int id) throws Exception {
-//		BikeValidator.validate(bike);
+
 		try (Connection connection = ConnectionUtil.getConnection()) {
 			String query = "UPDATE bike SET brand = ? WHERE id = ?";
+
 			try (PreparedStatement pst = connection.prepareStatement(query)) {
-//
+
 				pst.setString(1, brand);
 				pst.setInt(2, id);
 
@@ -120,9 +113,10 @@ public class BikeDao {
 	}
 
 	public static boolean deleteBike(int id) throws Exception {
-//		BikeValidator.validate(bike);
+
 		try (Connection connection = ConnectionUtil.getConnection()) {
 			String query = "DELETE FROM bike WHERE id = ?";
+
 			try (PreparedStatement pst = connection.prepareStatement(query)) {
 
 				pst.setInt(1, id);
@@ -138,11 +132,11 @@ public class BikeDao {
 		try (Connection connection = ConnectionUtil.getConnection()) {
 			String query = "SELECT * FROM bike WHERE brand = '" + brand + "'";
 
-			try (Statement st = connection.createStatement()) {
+			try (PreparedStatement pst = connection.prepareStatement(query)) {
 
-				st.addBatch(brand);
+//				st.addBatch(brand);
 
-				try (ResultSet rs = st.executeQuery(query)) { 
+				try (ResultSet rs = pst.executeQuery()) {
 
 					while (rs.next()) {
 						System.out.println("id: " + rs.getInt("id"));
@@ -168,12 +162,12 @@ public class BikeDao {
 	}
 
 	public static void main(String[] args) throws Exception {
-		Bike bike = new Bike(1, "Yamaha", "R15", 110000, "SECOND", "Chennai", LocalDate.of(1998, 9, 06));
+		Bike bike = new Bike(1, "Yamaha", "RX125", 110000, "FIRST", "Chennai", LocalDate.of(1998, 9, 06));
 
 //		addBike(bike);
 //		readBike();
 //		updateBike("Her", 1);
 //		deleteBike(10);
-//		readBikeAll("Yamaha");
+		readBikeAll("Yamaha");
 	}
 }
