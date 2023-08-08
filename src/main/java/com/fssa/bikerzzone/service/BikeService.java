@@ -11,9 +11,7 @@ public class BikeService {
 	public static boolean addBike(Bike bike) throws Exception {
 
 		if (BikeValidator.validate(bike)) {
-
-			boolean result = BikeDao.addBike(bike);
-			return result;
+			return BikeDao.addBike(bike);
 		}
 		return false;
 	}
