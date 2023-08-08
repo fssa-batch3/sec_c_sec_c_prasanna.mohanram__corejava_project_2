@@ -25,7 +25,7 @@ public class BikeDao {
 				pst.setDate(6, java.sql.Date.valueOf(bike.getManufactureDate()));
 				int row = pst.executeUpdate();
 
-				return (row > 0) ? true : false;
+				return (row > 0);
 			}
 		}
 	}
@@ -107,7 +107,7 @@ public class BikeDao {
 
 				int row = pst.executeUpdate();
 
-				return (row > 0) ? true : false;
+				return (row > 0);
 			}
 		}
 	}
@@ -122,7 +122,7 @@ public class BikeDao {
 				pst.setInt(1, id);
 				int row = pst.executeUpdate();
 
-				return (row > 0) ? true : false;
+				return (row > 0);
 			}
 		}
 	}
@@ -130,11 +130,11 @@ public class BikeDao {
 	public static boolean readBikeAll(String brand) throws SQLException {
 
 		try (Connection connection = ConnectionUtil.getConnection()) {
-			String query = "SELECT * FROM bike WHERE brand = '" + brand + "'";
+			String query = "SELECT * FROM bike WHERE brand = ?";
 
 			try (PreparedStatement pst = connection.prepareStatement(query)) {
 
-//				st.addBatch(brand);
+				pst.setString(1, brand);
 
 				try (ResultSet rs = pst.executeQuery()) {
 
@@ -162,7 +162,7 @@ public class BikeDao {
 	}
 
 	public static void main(String[] args) throws Exception {
-		Bike bike = new Bike(1, "Yamaha", "RX125", 110000, "FIRST", "Chennai", LocalDate.of(1998, 9, 06));
+//		Bike bike = new Bike(1, "Yamaha", "RX125", 110000, "FIRST", "Chennai", LocalDate.of(1998, 9, 06));
 
 //		addBike(bike);
 //		readBike();

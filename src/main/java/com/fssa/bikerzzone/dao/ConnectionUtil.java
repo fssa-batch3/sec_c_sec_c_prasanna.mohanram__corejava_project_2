@@ -10,7 +10,9 @@ public class ConnectionUtil {
 	public static Connection getConnection() {
 		Connection con = null;
 
-		String url, userName, passWord;
+		String url;
+		String userName;
+		String passWord;
 
 		if (System.getenv("CI") != null) {
 			url = System.getenv("DATABASE_HOST");
