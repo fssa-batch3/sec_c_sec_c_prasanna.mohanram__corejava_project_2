@@ -26,7 +26,7 @@ public class TestBikeService {
 
 	@Test
 	public void testReadBike() throws DAOException, SQLException {
-		assertDoesNotThrow(() -> BikeDao.readBike(bike));
+		assertNotNull(BikeDao.readBike());
 	}
 
 	@Test
