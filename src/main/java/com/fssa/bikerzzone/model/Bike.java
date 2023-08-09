@@ -2,9 +2,6 @@ package com.fssa.bikerzzone.model;
 
 import java.time.LocalDate;
 
-
-//import com.fssa.bikerzzone.model.Bike.Types;
-
 public class Bike {
 
 	private long id;
@@ -12,11 +9,6 @@ public class Bike {
 	private String model;
 	private double price;
 	private String ownership;
-	
-//	private Types ownership;
-//	 public enum Types{
-//		 FIRST, SECOND, THIRD, FOURTH
-//	 }
 	private String location;
 	private LocalDate manufactureDate;
 
@@ -63,21 +55,13 @@ public class Bike {
 		this.model = model;
 	}
 
-	public double getPrice() { 
+	public double getPrice() {
 		return price;
 	}
 
 	public void setPrice(double price) {
 		this.price = price;
 	}
-
-//	public Types getOwnership() {
-//		return ownership;
-//	}
-//
-//	public void setOwnership(Types ownership) {
-//		this.ownership = ownership;
-//	}
 
 	public String getLocation() {
 		return location;
@@ -98,9 +82,4 @@ public class Bike {
 	public void setManufactureDate(LocalDate manufactureDate) {
 		this.manufactureDate = manufactureDate;
 	}
-
-	public static void main(String[] args) {
-		System.out.println();
-	}
-
 }
