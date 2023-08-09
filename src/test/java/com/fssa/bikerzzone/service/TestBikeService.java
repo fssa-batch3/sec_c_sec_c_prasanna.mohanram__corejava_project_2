@@ -17,7 +17,7 @@ public class TestBikeService {
 
 	@Test
 	protected void testAddBike() throws Exception, DAOException {
-		Bike bike = new Bike(1, "Honda", "CBR120", 80000, "FIRST", "Chennai", LocalDate.of(2003, 9, 5));
+		Bike bike = new Bike(1, "Honda", "CBR125", 80000, "FIRST", "Chennai", LocalDate.of(2003, 9, 5));
 
 		assertTrue(BikeValidator.validate(bike));
 		assertDoesNotThrow(() -> BikeDao.addBike(bike));
