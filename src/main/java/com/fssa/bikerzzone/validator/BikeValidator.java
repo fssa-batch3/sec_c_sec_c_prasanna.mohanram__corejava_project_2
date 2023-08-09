@@ -26,7 +26,7 @@ public class BikeValidator {
 		return true;
 	}
 
-	public static  boolean validateBrand(String brand) throws Exception {
+	public static boolean validateBrand(String brand) throws Exception {
 
 		if (brand == null) {
 			throw new Exception(BikeValidatorErrors.INVALID_BRAND_NULL);
@@ -37,7 +37,7 @@ public class BikeValidator {
 		Matcher matcher = pattern.matcher(brand);
 		Boolean isMatch = matcher.matches();
 
-		if (!isMatch) {
+		if (Boolean.FALSE.equals(isMatch)) {
 			throw new Exception(BikeValidatorErrors.INVALID_BRAND_PATTERN);
 		}
 		return true;
@@ -54,8 +54,8 @@ public class BikeValidator {
 		Matcher matcher = pattern.matcher(model);
 		Boolean isMatch = matcher.matches();
 
-		if (!isMatch) {
-			throw new Exception(BikeValidatorErrors.INVALID_MODEL_PATTERN); 
+		if (Boolean.FALSE.equals(isMatch)) {
+			throw new Exception(BikeValidatorErrors.INVALID_MODEL_PATTERN);
 		}
 		return true;
 
@@ -80,7 +80,7 @@ public class BikeValidator {
 		Matcher matcher = pattern.matcher(location);
 		Boolean isMatch = matcher.matches();
 
-		if (!isMatch) {
+		if (Boolean.FALSE.equals(isMatch)) {
 			throw new Exception(BikeValidatorErrors.INVALID_LOCATION_PATTERN);
 		}
 		return true;
@@ -107,6 +107,5 @@ public class BikeValidator {
 
 		throw new Exception(BikeValidatorErrors.INVALID_OWNERSHIP);
 	}
-
 
 }
