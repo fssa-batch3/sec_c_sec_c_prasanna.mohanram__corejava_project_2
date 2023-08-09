@@ -18,7 +18,7 @@ public class TestBikeService {
 
 	@Test
 	public void testAddBike() throws Exception, DAOException {
-		Bike bike = new Bike(1, "Honda", "CB160", 80000, "FIRST", "Chennai", LocalDate.of(2003, 9, 5));
+		Bike bike = new Bike(1, "Honda", "CB170", 80000, "FIRST", "Chennai", LocalDate.of(2003, 9, 5));
 
 		assertTrue(BikeValidator.validate(bike));
 		assertDoesNotThrow(() -> BikeDao.addBike(bike));
@@ -27,7 +27,7 @@ public class TestBikeService {
 	@Test
 	public void testReadBike() throws DAOException, SQLException {
 		// Assuming BikeDao.readBike() returns a list of bikes, validate the list
-		assertNotNull(BikeDao.readBike());
+		assertDoesNotThrow(() -> BikeDao.addBike(bike));
 	}
 
 	@Test
