@@ -1,6 +1,6 @@
 package com.fssa.bikerzzone.errors;
 
-public interface BikeValidatorErrors {
+public class BikeValidatorErrors {
 
 	public static final String INVALID_BIKE_NULL = "Bike can't be null";
 
