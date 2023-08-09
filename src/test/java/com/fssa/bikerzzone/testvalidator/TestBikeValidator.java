@@ -19,12 +19,12 @@ public class TestBikeValidator {
 	BikeValidator validatorBike = new BikeValidator();
 
 	@Test
-	protected void testValidate() throws Exception {
+	 void testValidate() throws Exception {
 		Assertions.assertTrue(validatorBike.validate(bike));
 	}
 
 	@Test
-	protected void testValidatenull() throws Exception {
+	 void testValidatenull() throws Exception {
 		Bike bike = null;
 		try {
 			Assertions.assertTrue(validatorBike.validate(bike));
@@ -34,14 +34,14 @@ public class TestBikeValidator {
 	}
 
 	@Test
-	protected void testValidateId() throws Exception {
+	 void testValidateId() throws Exception {
 
 		Assertions.assertTrue(validatorBike.validateId(bike.getId()));
 
 	}
 
 	@Test
-	protected void testNegativeValidatId() {
+	 void testNegativeValidatId() {
 		try {
 			validatorBike.validateId(invalidBike.getId());
 //			Assertions.fail("Test case failed");
@@ -52,13 +52,13 @@ public class TestBikeValidator {
 	}
 
 	@Test
-	protected void testValidateBrand() throws Exception {
+	 void testValidateBrand() throws Exception {
 
 		Assertions.assertTrue(validatorBike.validateBrand(bike.getBrand()));
 	}
 
 	@Test
-	protected void testNullValidateBrand() {
+	 void testNullValidateBrand() {
 		try {
 			validatorBike.validateBrand(null);
 //			Assertions.fail("Test case failed");
@@ -68,7 +68,7 @@ public class TestBikeValidator {
 	}
 
 	@Test
-	protected void testInvalidBrand() {
+	 void testInvalidBrand() {
 		try {
 			validatorBike.validateBrand(invalidBike.getBrand());
 //			Assertions.fail("Test case failed");
@@ -78,13 +78,13 @@ public class TestBikeValidator {
 	}
 
 	@Test
-	protected void testValidateModel() throws Exception {
+	 void testValidateModel() throws Exception {
 
 		Assertions.assertTrue(validatorBike.validateModel(bike.getModel()));
 	}
 
 	@Test
-	protected void testNullValidateModel() {
+	 void testNullValidateModel() {
 		try {
 			validatorBike.validateModel(null);
 //			Assertions.fail("Test case failed");
@@ -94,7 +94,7 @@ public class TestBikeValidator {
 	}
 
 	@Test
-	protected void testInvalidModel() {
+	 void testInvalidModel() {
 		try {
 			validatorBike.validateModel("ya###^maha");
 //			Assertions.fail("Test case failed");
@@ -104,14 +104,14 @@ public class TestBikeValidator {
 	}
 
 	@Test
-	protected void testValidatePrice() throws Exception {
+	 void testValidatePrice() throws Exception {
 
 		Assertions.assertTrue(validatorBike.validatePrice(bike.getPrice()));
 
 	}
 
 	@Test
-	protected void testNegativeValidatPrice() {
+	 void testNegativeValidatPrice() {
 		try {
 			validatorBike.validatePrice(invalidBike.getPrice());
 //			Assertions.fail("Test case failed");
@@ -122,7 +122,7 @@ public class TestBikeValidator {
 	}
 
 	@Test
-	protected void testNegativeValidatPrice2() {
+	 void testNegativeValidatPrice2() {
 		try {
 			validatorBike.validatePrice(-1);
 //			Assertions.fail("Test case failed");
@@ -133,7 +133,7 @@ public class TestBikeValidator {
 	}
 
 	@Test
-	protected void testNegativeValidatPrice3() {
+	 void testNegativeValidatPrice3() {
 		try {
 			validatorBike.validatePrice(10000001);
 //			Assertions.fail("Test case failed");
@@ -144,13 +144,13 @@ public class TestBikeValidator {
 	}
 
 	@Test
-	protected void testValidateLocation() throws Exception {
+	 void testValidateLocation() throws Exception {
 
 		Assertions.assertTrue(validatorBike.validateLocation(bike.getLocation()));
 	}
 
 	@Test
-	protected void testNullValidateLocation() {
+	 void testNullValidateLocation() {
 		try {
 			validatorBike.validateLocation(null);
 //			Assertions.fail("Test case failed");
@@ -160,7 +160,7 @@ public class TestBikeValidator {
 	}
 
 	@Test
-	protected void testInvalidLocation() {
+	 void testInvalidLocation() {
 		try {
 			validatorBike.validateLocation(invalidBike.getLocation());
 //			Assertions.fail("Test case failed");
@@ -170,14 +170,14 @@ public class TestBikeValidator {
 	}
 
 	@Test
-	protected void testValidateManufactureDate() throws Exception {
+	 void testValidateManufactureDate() throws Exception {
 
 		Assertions.assertTrue(validatorBike.validateManufactureDate(bike.getManufactureDate()));
 
 	}
 
 	@Test
-	protected void testNullValidateManufactureDate() {
+	 void testNullValidateManufactureDate() {
 		try {
 			validatorBike.validateManufactureDate(null);
 		} catch (Exception e) {
@@ -186,7 +186,7 @@ public class TestBikeValidator {
 	}
 
 	@Test
-	protected void testInvalidManufactureDate() {
+	 void testInvalidManufactureDate() {
 		try {
 			validatorBike.validateManufactureDate(invalidBike.getManufactureDate());
 //			Assertions.fail("Test case failed");
@@ -196,7 +196,7 @@ public class TestBikeValidator {
 	}
 
 	@Test
-	protected void testValidateOwnershipValid() throws Exception {
+	 void testValidateOwnershipValid() throws Exception {
 
 		Ownership ownershipToValidate = Ownership.FIRST;
 
@@ -204,7 +204,7 @@ public class TestBikeValidator {
 	}
 
 	@Test
-	protected void testValidateOwnershipInvalid() throws Exception {
+	void testValidateOwnershipInvalid() throws Exception {
 
 		try {
 			validatorBike.validateOwnership(invalidBike.getOwnership());

@@ -16,20 +16,20 @@ import com.fssa.bikerzzone.validator.BikeValidator;
 public class TestBikeService {
 
 	@Test
-	protected void testAddBike() throws Exception, DAOException {
-		Bike bike = new Bike(1, "Honda", "CBR125", 80000, "FIRST", "Chennai", LocalDate.of(2003, 9, 5));
+	 void testAddBike() throws Exception, DAOException {
+		Bike bike = new Bike(1, "Honda", "CBR10", 80000, "FIRST", "Chennai", LocalDate.of(2003, 9, 5));
 
 		assertTrue(BikeValidator.validate(bike));
 		assertDoesNotThrow(() -> BikeDao.addBike(bike));
 	}
 
 	@Test
-	protected void testReadBike() throws DAOException, SQLException {
+	 void testReadBike() throws DAOException, SQLException {
 		BikeDao.readBike();
 	}
 
 	@Test
-	protected void testUpdateBike() throws Exception, DAOException {
+	 void testUpdateBike() throws Exception, DAOException {
 		int id = 1;
 		String brand = "Hero";
 
@@ -39,7 +39,7 @@ public class TestBikeService {
 	}
 
 	@Test
-	protected void testDeleteBike() throws Exception {
+	void testDeleteBike() throws Exception {
 		int id = 1;
 
 		assertTrue(BikeValidator.validateId(id));
