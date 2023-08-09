@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
 
 import com.fssa.bikerzzone.model.Bike;
 import com.fssa.bikerzzone.validator.BikeValidator;
@@ -161,11 +162,16 @@ public class BikeDao {
 	}
 
 	public static void main(String[] args) throws Exception {
+		Bike bike = new Bike(1, "Yamaha", "RX125", 110000, "FIRST", "Chennai", LocalDate.of(1998, 9, 06));
 
 //		addBike(bike);
+
 //		readBike();
-//		updateBike("Her", 1);
+
+//		updateBike("Hero", 1);
+
 //		deleteBike(10);
+
 		readBikeAll("Yamaha");
 	}
 }
