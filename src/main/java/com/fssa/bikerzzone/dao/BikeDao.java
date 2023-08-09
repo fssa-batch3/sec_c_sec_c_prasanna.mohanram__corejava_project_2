@@ -160,18 +160,4 @@ public class BikeDao {
 		return true;
 
 	}
-
-	public static void main(String[] args) throws Exception {
-		Bike bike = new Bike(1, "Yamaha", "RX125", 110000, "FIRST", "Chennai", LocalDate.of(1998, 9, 06));
-
-//		addBike(bike);
-
-//		readBike();
-
-//		updateBike("Hero", 1);
-
-//		deleteBike(10);
-
-		readBikeAll("Yamaha");
-	}
 }
