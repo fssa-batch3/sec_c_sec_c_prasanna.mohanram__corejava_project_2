@@ -161,7 +161,7 @@ public class BikeDao {
 	}
 
 	public static void main(String[] args) throws Exception {
-//		Bike bike = new Bike(1, "Yamaha", "RX125", 110000, "FIRST", "Chennai", LocalDate.of(1998, 9, 06));
+//		Bike bike = new Bike(1, "Yamaha", "RX135", 110000, "FIRST", "Chennai", LocalDate.of(1998, 9, 06));
 
 //		addBike(bike);
 //		readBike();
