@@ -1,5 +1,9 @@
 package com.fssa.bikerzzone.service;
 
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import java.sql.SQLException;
 import java.time.LocalDate;
 
@@ -14,34 +18,34 @@ public class TestBikeService {
 
 	@Test
 	public void testAddBike() throws Exception, DAOException {
-		Bike bike = new Bike(1, "Honda", "Unicorn", 80000, "FIRST", "Chennai", LocalDate.of(2003, 9, 05));
+		Bike bike = new Bike(1, "Honda", "CB150", 80000, "FIRST", "Chennai", LocalDate.of(2003, 9, 5));
 
-		if (BikeValidator.validate(bike)) {
-			BikeDao.addBike(bike);
-		}
+		assertTrue(BikeValidator.validate(bike));
+		assertDoesNotThrow(() -> BikeDao.addBike(bike));
 	}
 
 	@Test
 	public void testReadBike() throws DAOException, SQLException {
-		BikeDao.readBike();
+		// Assuming BikeDao.readBike() returns a list of bikes, validate the list
+		assertNotNull(BikeDao.readBike());
 	}
 
 	@Test
 	public void testUpdateBike() throws Exception, DAOException {
 		int id = 1;
-		String brand = "UpdatedBrand";
+		String brand = "Hero";
 
-		if (BikeValidator.validateId(id) && BikeValidator.validateBrand(brand)) {
-			BikeDao.updateBike(brand, id);
-		}
+		assertTrue(BikeValidator.validateId(id));
+		assertTrue(BikeValidator.validateBrand(brand));
+		assertDoesNotThrow(() -> BikeDao.updateBike(brand, id));
 	}
 
 	@Test
 	public void testDeleteBike() throws Exception {
 		int id = 1;
 
-		if (BikeValidator.validateId(id)) {
-			BikeDao.deleteBike(id);
-		}
+		assertTrue(BikeValidator.validateId(id));
+		assertDoesNotThrow(() -> BikeDao.deleteBike(id));
 	}
+
 }
