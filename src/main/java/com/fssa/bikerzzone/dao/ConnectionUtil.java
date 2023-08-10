@@ -3,6 +3,8 @@ package com.fssa.bikerzzone.dao;
 import java.sql.Connection;
 import java.sql.DriverManager;
 
+import com.fssa.bikerzzone.logger.Logger;
+
 import io.github.cdimascio.dotenv.Dotenv;
 
 public class ConnectionUtil {
@@ -28,10 +30,11 @@ public class ConnectionUtil {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			con = DriverManager.getConnection(url, userName, passWord);
-			System.out.println("connection created");
+			Logger.info("connection created");
 		} catch (Exception e) {
 			e.getMessage();
-			throw new RuntimeException("Unable to connect to the database");
+			e.printStackTrace();
+//			throw new RuntimeException("Unable to connect to the database");
 		}
 		return con;
 	}

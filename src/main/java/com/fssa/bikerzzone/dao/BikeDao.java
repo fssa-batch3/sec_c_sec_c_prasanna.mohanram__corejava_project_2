@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDate;
 
+import com.fssa.bikerzzone.logger.Logger;
 import com.fssa.bikerzzone.model.Bike;
 import com.fssa.bikerzzone.validator.BikeValidator;
 
@@ -41,17 +42,17 @@ public class BikeDao {
 
 				pst.setString(1, brand);
 
-				try (ResultSet resultSet = pst.executeQuery()) {
+				try (ResultSet rs = pst.executeQuery()) {
 
-					while (resultSet.next()) {
+					while (rs.next()) {
 
-						System.out.println("id: " + resultSet.getInt(1));
-						System.out.println("Brand: " + resultSet.getString(2));
-						System.out.println("model: " + resultSet.getString(3));
-						System.out.println("price: " + resultSet.getDouble(4));
-						System.out.println("Ownership: " + resultSet.getString(5));
-						System.out.println("Location: " + resultSet.getString(6));
-						System.out.println("Manufacture Date: " + resultSet.getDate("manufactureDate").toLocalDate());
+						Logger.info("id: " + rs.getInt(1));
+						Logger.info("brand: " + rs.getString(2));
+						Logger.info("model: " + rs.getString(3));
+						Logger.info("price: " + rs.getDouble(4));
+						Logger.info("ownership: " + rs.getString(5));
+						Logger.info("location: " + rs.getString(6));
+						Logger.info("Manufacture Date: " + rs.getDate("manufactureDate").toLocalDate());
 
 					}
 				}
@@ -75,14 +76,14 @@ public class BikeDao {
 
 					while (rs.next()) {
 
-						System.out.println("id: " + rs.getInt(1));
-						System.out.println("brand: " + rs.getString(2));
-						System.out.println("model: " + rs.getString(3));
-						System.out.println("price: " + rs.getDouble(4));
-						System.out.println("Ownership: " + rs.getString(5));
-						System.out.println("location: " + rs.getString(6));
-						System.out.println("manufacture Date: " + rs.getDate(7));
-						System.out.println("\n");
+						Logger.info("id: " + rs.getInt(1));
+						Logger.info("brand: " + rs.getString(2));
+						Logger.info("model: " + rs.getString(3));
+						Logger.info("price: " + rs.getDouble(4));
+						Logger.info("ownership: " + rs.getString(5));
+						Logger.info("location: " + rs.getString(6));
+						Logger.info("manufacture Date: " + rs.getDate(7));
+						Logger.info("\n");
 
 					}
 					return true;
@@ -139,13 +140,14 @@ public class BikeDao {
 				try (ResultSet rs = pst.executeQuery()) {
 
 					while (rs.next()) {
-						System.out.println("id: " + rs.getInt("id"));
-						System.out.println("brand: " + rs.getString("brand"));
-						System.out.println("model: " + rs.getString("model"));
-						System.out.println("price: " + rs.getDouble("price"));
-						System.out.println("location: " + rs.getString("location"));
-						System.out.println("manufacture Date: " + rs.getDate("manufactureDate"));
-						System.out.println();
+						Logger.info("id: " + rs.getInt("id"));
+						Logger.info("brand: " + rs.getString("brand"));
+						Logger.info("model: " + rs.getString("model"));
+						Logger.info("price: " + rs.getDouble("price"));
+						Logger.info("ownership: " + rs.getString("ownership"));
+						Logger.info("location: " + rs.getString("location"));
+						Logger.info("manufacture Date: " + rs.getDate("manufactureDate"));
+						Logger.info("\n");
 
 					}
 
