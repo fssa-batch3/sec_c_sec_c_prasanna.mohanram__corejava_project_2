@@ -12,6 +12,10 @@ import com.fssa.bikerzzone.validator.BikeValidator;
 
 public class BikeDao {
 
+	private BikeDao() {
+
+	}
+
 	public static boolean addBike(Bike bike) throws Exception {
 		BikeValidator.validate(bike);
 		try (Connection connection = ConnectionUtil.getConnection()) {
