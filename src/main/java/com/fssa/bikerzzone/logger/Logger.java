@@ -4,7 +4,7 @@ public class Logger {
 	/**
 	 * Default constructor for creating a Logger object.
 	 */
-	public Logger() {
+	private Logger() {
 		// Default constructor
 	}
 
