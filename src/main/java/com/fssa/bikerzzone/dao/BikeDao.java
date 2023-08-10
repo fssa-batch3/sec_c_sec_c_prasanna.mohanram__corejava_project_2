@@ -102,7 +102,7 @@ public class BikeDao {
 		}
 	}
 
-	public static boolean updateBike(String brand, int id) throws DAOException, SQLException {
+	public static boolean updateBike(String brand, int id) throws SQLException {
 		try (Connection connection = ConnectionUtil.getConnection()) {
 			String query = "UPDATE bike SET brand = ? WHERE id = ?";
 
@@ -117,7 +117,7 @@ public class BikeDao {
 		}
 	}
 
-	public static boolean deleteBike(int id) throws DAOException, SQLException {
+	public static boolean deleteBike(int id) throws SQLException {
 		try (Connection connection = ConnectionUtil.getConnection()) {
 			String query = "DELETE FROM bike WHERE id = ?";
 
