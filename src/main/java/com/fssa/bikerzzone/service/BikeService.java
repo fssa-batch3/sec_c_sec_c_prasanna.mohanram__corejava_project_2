@@ -13,8 +13,7 @@ public class BikeService {
 
 		if (BikeValidator.validate(bike)) {
 
-			boolean result = BikeDao.addBike(bike);
-			return result;
+			return BikeDao.addBike(bike);
 		}
 		return false;
 	}
@@ -29,7 +28,7 @@ public class BikeService {
 		return false;
 	}
 
-	public static boolean readBike() throws SQLException, DAOException {
+	public static boolean readBike() throws DAOException {
 
 		return BikeDao.readBike();
 
