@@ -18,7 +18,7 @@ public class BikeService {
 		return false;
 	}
 
-	public static boolean updateBike(String brand, int id) throws Exception {
+	public static boolean updateBike(String brand, int id) throws DAOException, SQLException {
 
 		if (BikeValidator.validateId(id) && BikeValidator.validateBrand(brand)) {
 
@@ -34,7 +34,7 @@ public class BikeService {
 
 	}
 
-	public static boolean deleteBike(int id) throws Exception {
+	public static boolean deleteBike(int id) throws DAOException, SQLException {
 
 		if (BikeValidator.validateId(id)) {
 			return BikeDao.deleteBike(id);
