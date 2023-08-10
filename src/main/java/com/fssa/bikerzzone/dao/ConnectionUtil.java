@@ -33,7 +33,6 @@ public class ConnectionUtil {
 			Logger.info("connection created");
 		} catch (Exception e) {
 			e.getMessage();
-			e.printStackTrace();
 //			throw new RuntimeException("Unable to connect to the database");
 		}
 		return con;
