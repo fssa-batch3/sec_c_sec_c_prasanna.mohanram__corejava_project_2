@@ -12,6 +12,14 @@ import com.fssa.bikerzzone.validator.BikeValidator;
 
 public class BikeDao {
 
+	private static final String ID_LABEL = "id: ";
+	private static final String BRAND_LABEL = "brand: ";
+	private static final String MODEL_LABEL = "model: ";
+	private static final String PRICE_LABEL = "price: ";
+	private static final String OWNERSHIP_LABEL = "ownership: ";
+	private static final String LOCATION_LABEL = "location: ";
+	private static final String MANUFACTURE_DATE_LABEL = "manufacture Date: ";
+
 	private BikeDao() {
 
 	}
@@ -49,13 +57,13 @@ public class BikeDao {
 
 					while (rs.next()) {
 
-						Logger.info("id: " + rs.getInt(1));
-						Logger.info("brand: " + rs.getString(2));
-						Logger.info("model: " + rs.getString(3));
-						Logger.info("price: " + rs.getDouble(4));
-						Logger.info("ownership: " + rs.getString(5));
-						Logger.info("location: " + rs.getString(6));
-						Logger.info("Manufacture Date: " + rs.getDate("manufactureDate").toLocalDate());
+						Logger.info(ID_LABEL + rs.getInt(1));
+						Logger.info(BRAND_LABEL + rs.getString(2));
+						Logger.info(MODEL_LABEL + rs.getString(3));
+						Logger.info(PRICE_LABEL + rs.getDouble(4));
+						Logger.info(OWNERSHIP_LABEL + rs.getString(5));
+						Logger.info(LOCATION_LABEL + rs.getString(6));
+						Logger.info(MANUFACTURE_DATE_LABEL + rs.getDate("manufactureDate").toLocalDate());
 
 					}
 				}
@@ -65,11 +73,9 @@ public class BikeDao {
 
 		}
 		return bike;
-
 	}
 
 	public static boolean readBike() throws SQLException {
-
 		try (Connection connection = ConnectionUtil.getConnection()) {
 			String query = "SELECT * FROM bike";
 
@@ -78,34 +84,28 @@ public class BikeDao {
 				try (ResultSet rs = statement.executeQuery(query)) {
 
 					while (rs.next()) {
-
-						Logger.info("id: " + rs.getInt(1));
-						Logger.info("brand: " + rs.getString(2));
-						Logger.info("model: " + rs.getString(3));
-						Logger.info("price: " + rs.getDouble(4));
-						Logger.info("ownership: " + rs.getString(5));
-						Logger.info("location: " + rs.getString(6));
-						Logger.info("manufacture Date: " + rs.getDate(7));
+						Logger.info(ID_LABEL + rs.getInt(1));
+						Logger.info(BRAND_LABEL + rs.getString(2));
+						Logger.info(MODEL_LABEL + rs.getString(3));
+						Logger.info(PRICE_LABEL + rs.getDouble(4));
+						Logger.info(OWNERSHIP_LABEL + rs.getString(5));
+						Logger.info(LOCATION_LABEL + rs.getString(6));
+						Logger.info(MANUFACTURE_DATE_LABEL + rs.getDate(7));
 						Logger.info("\n");
-
 					}
 					return true;
 				}
 			}
 		} catch (SQLException ex) {
 			throw new SQLException(ex);
-
 		}
-
 	}
 
 	public static boolean updateBike(String brand, int id) throws Exception {
-
 		try (Connection connection = ConnectionUtil.getConnection()) {
 			String query = "UPDATE bike SET brand = ? WHERE id = ?";
 
 			try (PreparedStatement pst = connection.prepareStatement(query)) {
-
 				pst.setString(1, brand);
 				pst.setInt(2, id);
 
@@ -117,12 +117,10 @@ public class BikeDao {
 	}
 
 	public static boolean deleteBike(int id) throws Exception {
-
 		try (Connection connection = ConnectionUtil.getConnection()) {
 			String query = "DELETE FROM bike WHERE id = ?";
 
 			try (PreparedStatement pst = connection.prepareStatement(query)) {
-
 				pst.setInt(1, id);
 				int row = pst.executeUpdate();
 
@@ -132,37 +130,28 @@ public class BikeDao {
 	}
 
 	public static boolean readBikeAll(String brand) throws SQLException {
-
 		try (Connection connection = ConnectionUtil.getConnection()) {
 			String query = "SELECT * FROM bike WHERE brand = ?";
 
 			try (PreparedStatement pst = connection.prepareStatement(query)) {
-
 				pst.setString(1, brand);
 
 				try (ResultSet rs = pst.executeQuery()) {
-
 					while (rs.next()) {
-						Logger.info("id: " + rs.getInt("id"));
-						Logger.info("brand: " + rs.getString("brand"));
-						Logger.info("model: " + rs.getString("model"));
-						Logger.info("price: " + rs.getDouble("price"));
-						Logger.info("ownership: " + rs.getString("ownership"));
-						Logger.info("location: " + rs.getString("location"));
-						Logger.info("manufacture Date: " + rs.getDate("manufactureDate"));
+						Logger.info(ID_LABEL + rs.getInt("id"));
+						Logger.info(BRAND_LABEL + rs.getString("brand"));
+						Logger.info(MODEL_LABEL + rs.getString("model"));
+						Logger.info(PRICE_LABEL + rs.getDouble("price"));
+						Logger.info(OWNERSHIP_LABEL + rs.getString("ownership"));
+						Logger.info(LOCATION_LABEL + rs.getString("location"));
+						Logger.info(MANUFACTURE_DATE_LABEL + rs.getDate("manufactureDate"));
 						Logger.info("\n");
-
 					}
-
 				}
-
 			}
-
 		} catch (SQLException ex) {
 			throw new SQLException(ex);
-
 		}
 		return true;
-
 	}
 }
