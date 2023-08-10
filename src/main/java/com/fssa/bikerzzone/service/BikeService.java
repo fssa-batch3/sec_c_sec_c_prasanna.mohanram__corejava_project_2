@@ -3,15 +3,18 @@ package com.fssa.bikerzzone.service;
 import java.sql.SQLException;
 
 import com.fssa.bikerzzone.dao.BikeDao;
+import com.fssa.bikerzzone.exceptions.DAOException;
 import com.fssa.bikerzzone.model.Bike;
 import com.fssa.bikerzzone.validator.BikeValidator;
 
 public class BikeService {
 
-	public static boolean addBike(Bike bike) throws Exception {
+	public static boolean addBike(Bike bike) throws DAOException, SQLException {
 
 		if (BikeValidator.validate(bike)) {
-			return BikeDao.addBike(bike);
+
+			boolean result = BikeDao.addBike(bike);
+			return result;
 		}
 		return false;
 	}
@@ -26,7 +29,7 @@ public class BikeService {
 		return false;
 	}
 
-	public static boolean readBike() throws SQLException {
+	public static boolean readBike() throws SQLException, DAOException {
 
 		return BikeDao.readBike();
 
