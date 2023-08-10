@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import com.fssa.bikerzzone.exceptions.DAOException;
 import com.fssa.bikerzzone.logger.Logger;
 import com.fssa.bikerzzone.model.Bike;
 import com.fssa.bikerzzone.validator.BikeValidator;
@@ -24,7 +25,7 @@ public class BikeDao {
 
 	}
 
-	public static boolean addBike(Bike bike) throws Exception {
+	public static boolean addBike(Bike bike) throws DAOException, SQLException {
 		BikeValidator.validate(bike);
 		try (Connection connection = ConnectionUtil.getConnection()) {
 			String query = "insert into bike(brand,model,price,ownership,location,manufactureDate)values(?,?,?,?,?,?)";
@@ -42,7 +43,7 @@ public class BikeDao {
 		}
 	}
 
-	public static Bike findBikesByBrand(String brand) throws SQLException {
+	public static Bike findBikesByBrand(String brand) throws DAOException {
 
 		Bike bike = null;
 
@@ -69,13 +70,13 @@ public class BikeDao {
 				}
 			}
 		} catch (SQLException ex) {
-			throw new SQLException(ex);
+			throw new DAOException(ex);
 
 		}
 		return bike;
 	}
 
-	public static boolean readBike() throws SQLException {
+	public static boolean readBike() throws DAOException {
 		try (Connection connection = ConnectionUtil.getConnection()) {
 			String query = "SELECT * FROM bike";
 
@@ -97,11 +98,11 @@ public class BikeDao {
 				}
 			}
 		} catch (SQLException ex) {
-			throw new SQLException(ex);
+			throw new DAOException(ex);
 		}
 	}
 
-	public static boolean updateBike(String brand, int id) throws Exception {
+	public static boolean updateBike(String brand, int id) throws DAOException, SQLException {
 		try (Connection connection = ConnectionUtil.getConnection()) {
 			String query = "UPDATE bike SET brand = ? WHERE id = ?";
 
@@ -116,7 +117,7 @@ public class BikeDao {
 		}
 	}
 
-	public static boolean deleteBike(int id) throws Exception {
+	public static boolean deleteBike(int id) throws DAOException, SQLException {
 		try (Connection connection = ConnectionUtil.getConnection()) {
 			String query = "DELETE FROM bike WHERE id = ?";
 
@@ -129,7 +130,7 @@ public class BikeDao {
 		}
 	}
 
-	public static boolean readBikeAll(String brand) throws SQLException {
+	public static boolean readBikeAll(String brand) throws DAOException {
 		try (Connection connection = ConnectionUtil.getConnection()) {
 			String query = "SELECT * FROM bike WHERE brand = ?";
 
@@ -150,7 +151,7 @@ public class BikeDao {
 				}
 			}
 		} catch (SQLException ex) {
-			throw new SQLException(ex);
+			throw new DAOException(ex.getMessage());
 		}
 		return true;
 	}
