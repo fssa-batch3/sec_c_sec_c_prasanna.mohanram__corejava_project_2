@@ -26,7 +26,7 @@ public class TestBikeService {
 	@Test
 	void testAddBike() throws Exception {
 		// Create a sample Bike object
-		Bike bike = new Bike(1, "Yamaha", "RX135", 80000, "FIRST", "Chennai", LocalDate.of(2003, 9, 5));
+		Bike bike = new Bike(1, "Yamaha", "RX110", 80000, "FIRST", "Chennai", LocalDate.of(2003, 9, 5));
 
 		// Validate the Bike object and add it using the BikeDao
 		assertTrue(BikeValidator.validate(bike));
