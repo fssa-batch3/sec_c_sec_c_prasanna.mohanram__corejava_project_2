@@ -11,6 +11,10 @@ import com.fssa.bikerzzone.logger.Logger;
 import com.fssa.bikerzzone.model.Bike;
 import com.fssa.bikerzzone.validator.BikeValidator;
 
+/**
+ * This class provides methods for interacting with the 'bike' table in the
+ * database.
+ */
 public class BikeDao {
 
 	private static final String ID_LABEL = "id: ";
@@ -21,10 +25,21 @@ public class BikeDao {
 	private static final String LOCATION_LABEL = "location: ";
 	private static final String MANUFACTURE_DATE_LABEL = "manufacture Date: ";
 
+	/**
+	 * Private constructor to prevent instantiation.
+	 */
 	private BikeDao() {
 
 	}
 
+	/**
+	 * Adds a bike to the 'bike' table in the database.
+	 *
+	 * @param bike The Bike object to be added.
+	 * @return True if the bike was added successfully, false otherwise.
+	 * @throws DAOException If a database-related error occurs.
+	 * @throws SQLException If a SQL-related error occurs.
+	 */
 	public static boolean addBike(Bike bike) throws DAOException, SQLException {
 		BikeValidator.validate(bike);
 		try (Connection connection = ConnectionUtil.getConnection()) {
@@ -43,6 +58,14 @@ public class BikeDao {
 		}
 	}
 
+	/**
+	 * Finds bikes in the 'bike' table by brand.
+	 *
+	 * @param brand The brand of the bikes to search for.
+	 * @return A Bike object if a bike with the given brand is found, null
+	 *         otherwise.
+	 * @throws DAOException If a database-related error occurs.
+	 */
 	public static Bike findBikesByBrand(String brand) throws DAOException {
 
 		Bike bike = null;
@@ -76,6 +99,13 @@ public class BikeDao {
 		return bike;
 	}
 
+	/**
+	 * Reads and logs information about all bikes in the 'bike' table.
+	 *
+	 * @return True if reading and logging were successful, false otherwise.
+	 * @throws DAOException If a database-related error occurs.
+	 */
+
 	public static boolean readBike() throws DAOException {
 		try (Connection connection = ConnectionUtil.getConnection()) {
 			String query = "SELECT * FROM bike";
@@ -102,6 +132,15 @@ public class BikeDao {
 		}
 	}
 
+	/**
+	 * Updates the brand of a bike in the 'bike' table by its ID.
+	 *
+	 * @param brand The new brand value.
+	 * @param id    The ID of the bike to be updated.
+	 * @return True if the bike was updated successfully, false otherwise.
+	 * @throws SQLException If a SQL-related error occurs.
+	 */
+
 	public static boolean updateBike(String brand, int id) throws SQLException {
 		try (Connection connection = ConnectionUtil.getConnection()) {
 			String query = "UPDATE bike SET brand = ? WHERE id = ?";
@@ -117,6 +156,14 @@ public class BikeDao {
 		}
 	}
 
+	/**
+	 * Deletes a bike from the 'bike' table by its ID.
+	 *
+	 * @param id The ID of the bike to be deleted.
+	 * @return True if the bike was deleted successfully, false otherwise.
+	 * @throws SQLException If a SQL-related error occurs.
+	 */
+
 	public static boolean deleteBike(int id) throws SQLException {
 		try (Connection connection = ConnectionUtil.getConnection()) {
 			String query = "DELETE FROM bike WHERE id = ?";
@@ -129,6 +176,15 @@ public class BikeDao {
 			}
 		}
 	}
+
+	/**
+	 * Reads and logs information about bikes in the 'bike' table with a specific
+	 * brand.
+	 *
+	 * @param brand The brand of the bikes to search for.
+	 * @return True if reading and logging were successful, false otherwise.
+	 * @throws DAOException If a database-related error occurs.
+	 */
 
 	public static boolean readBikeAll(String brand) throws DAOException {
 		try (Connection connection = ConnectionUtil.getConnection()) {

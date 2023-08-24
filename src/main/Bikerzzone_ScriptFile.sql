@@ -12,6 +12,5 @@ manufactureDate date not null
 drop table bike;
 
 select * from bike;
-truncate bike;
 
 -- SELECT * FROM bike WHERE brand = "hero"; 
