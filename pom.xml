@@ -16,7 +16,7 @@
 		<sonar.projectKey>
 			fssa-batch3_sec_c_sec_c_prasanna.mohanram__corejava_project_2</sonar.projectKey>
 		<sonar.organization>fssa-batch3</sonar.organization>
-		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
+		<sonar.host.url>ht tps://sonarcloud.io</sonar.host.url>
 	</properties>
 
 
@@ -37,11 +37,7 @@
 		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/io.github.cdimascio/java-dotenv -->
-		<dependency>
-			<groupId>io.github.cdimascio</groupId>
-			<artifactId>java-dotenv</artifactId>
-			<version>5.1.2</version>
-		</dependency>
+	
 	</dependencies>
 
 	<build>
