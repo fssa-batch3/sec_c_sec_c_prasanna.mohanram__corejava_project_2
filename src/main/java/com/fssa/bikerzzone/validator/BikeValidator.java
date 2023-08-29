@@ -25,6 +25,14 @@ public class BikeValidator {
 		if (bike == null) {
 			throw new DAOException(BikeValidatorErrors.INVALID_BIKE_NULL);
 		}
+		validateId(bike.getId());
+		validateBrand(bike.getBrand());
+		validateModel(bike.getModel());
+		validatePrice(bike.getPrice());
+		validateLocation(bike.getLocation());
+		validateManufactureDate(bike.getManufactureDate());
+		validateOwnership(bike.getOwnership());
+
 		return true;
 	}
 

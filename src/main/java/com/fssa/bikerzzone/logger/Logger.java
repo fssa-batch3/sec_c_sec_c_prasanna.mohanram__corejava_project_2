@@ -16,7 +16,7 @@ public class Logger {
 	 *
 	 * @param msg The log message to be printed.
 	 */
-	public static void info(String msg) {
+	public static void info(Object msg) {
 		System.out.println(msg);
 //      Logger.info(msg); // This line is commented out to prevent potential recursive call
 	}

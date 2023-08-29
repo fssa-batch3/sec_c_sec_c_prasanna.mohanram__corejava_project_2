@@ -41,7 +41,8 @@ public class ConnectionUtil {
 			Logger.info("Connection created");
 		} catch (Exception e) {
 			// Handle any exceptions that occur during connection establishment
-			e.getMessage();
+			System.out.println(e.getMessage());
+//			e.getMessage();
 		}
 		return con;
 	}
@@ -53,6 +54,6 @@ public class ConnectionUtil {
 	 */
 	public static void main(String[] args) {
 		// Test the getConnection method
-		ConnectionUtil.getConnection();
+		getConnection();
 	}
 }

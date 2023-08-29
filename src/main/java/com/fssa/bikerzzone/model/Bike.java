@@ -169,4 +169,12 @@ public class Bike {
 	public void setManufactureDate(LocalDate manufactureDate) {
 		this.manufactureDate = manufactureDate;
 	}
+
+	@Override
+	public String toString() {
+		return "Bike [id=" + id + ", brand=" + brand + ", model=" + model + ", price=" + price + ", ownership="
+				+ ownership + ", location=" + location + ", manufactureDate=" + manufactureDate + "]";
+	}
+	
+	
 }

@@ -105,7 +105,7 @@ public class TestBikeValidator {
 	@Test
 	void testInvalidModel() {
 		try {
-			validatorBike.validateModel("ya###^maha");
+			validatorBike.validateModel(invalidBike.getModel());
 			// Assertions.fail("Test case failed");
 		} catch (Exception e) {
 			Assertions.assertEquals(BikeValidatorErrors.INVALID_MODEL_PATTERN, e.getMessage());

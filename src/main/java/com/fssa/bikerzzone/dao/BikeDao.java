@@ -5,6 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.fssa.bikerzzone.exceptions.DAOException;
 import com.fssa.bikerzzone.logger.Logger;
@@ -41,7 +43,6 @@ public class BikeDao {
 	 * @throws SQLException If a SQL-related error occurs.
 	 */
 	public static boolean addBike(Bike bike) throws DAOException, SQLException {
-		BikeValidator.validate(bike);
 		try (Connection connection = ConnectionUtil.getConnection()) {
 			String query = "insert into bike(brand,model,price,ownership,location,manufactureDate)values(?,?,?,?,?,?)";
 			try (PreparedStatement pst = connection.prepareStatement(query)) {
@@ -106,7 +107,8 @@ public class BikeDao {
 	 * @throws DAOException If a database-related error occurs.
 	 */
 
-	public static boolean readBike() throws DAOException {
+	public static List<Bike> readBike() throws DAOException {
+		List<Bike> bikeList = new ArrayList<>();
 		try (Connection connection = ConnectionUtil.getConnection()) {
 			String query = "SELECT * FROM bike";
 
@@ -115,17 +117,19 @@ public class BikeDao {
 				try (ResultSet rs = statement.executeQuery(query)) {
 
 					while (rs.next()) {
-						Logger.info(ID_LABEL + rs.getInt(1));
-						Logger.info(BRAND_LABEL + rs.getString(2));
-						Logger.info(MODEL_LABEL + rs.getString(3));
-						Logger.info(PRICE_LABEL + rs.getDouble(4));
-						Logger.info(OWNERSHIP_LABEL + rs.getString(5));
-						Logger.info(LOCATION_LABEL + rs.getString(6));
-						Logger.info(MANUFACTURE_DATE_LABEL + rs.getDate(7));
-						Logger.info("\n");
+						Bike bike = new Bike();
+						bike.setId(rs.getInt("id"));
+						bike.setBrand(rs.getString("brand"));
+						bike.setModel(rs.getString("model"));
+						bike.setPrice(rs.getDouble("price"));
+						bike.setOwnership(rs.getString("ownership"));
+						bike.setLocation(rs.getString("Location"));
+						bike.setManufactureDate(rs.getDate("manufactureDate").toLocalDate());
+						bikeList.add(bike);
 					}
-					return true;
+
 				}
+				return bikeList;
 			}
 		} catch (SQLException ex) {
 			throw new DAOException(ex);
@@ -186,29 +190,30 @@ public class BikeDao {
 	 * @throws DAOException If a database-related error occurs.
 	 */
 
-	public static boolean readBikeAll(String brand) throws DAOException {
+	public static List<Bike> readBikeAll(String brand) throws DAOException {
+		List<Bike> bikeList = new ArrayList<>();
 		try (Connection connection = ConnectionUtil.getConnection()) {
-			String query = "SELECT * FROM bike WHERE brand = ?";
-
+			final String query = "SELECT * FROM bike WHERE brand = ?";
 			try (PreparedStatement pst = connection.prepareStatement(query)) {
 				pst.setString(1, brand);
 
 				try (ResultSet rs = pst.executeQuery()) {
 					while (rs.next()) {
-						Logger.info(ID_LABEL + rs.getInt("id"));
-						Logger.info(BRAND_LABEL + rs.getString("brand"));
-						Logger.info(MODEL_LABEL + rs.getString("model"));
-						Logger.info(PRICE_LABEL + rs.getDouble("price"));
-						Logger.info(OWNERSHIP_LABEL + rs.getString("ownership"));
-						Logger.info(LOCATION_LABEL + rs.getString("location"));
-						Logger.info(MANUFACTURE_DATE_LABEL + rs.getDate("manufactureDate"));
-						Logger.info("\n");
+						Bike bike = new Bike();
+						bike.setId(rs.getInt("id"));
+						bike.setBrand(rs.getString("brand"));
+						bike.setModel(rs.getString("model"));
+						bike.setPrice(rs.getDouble("price"));
+						bike.setOwnership(rs.getString("ownership"));
+						bike.setLocation(rs.getString("Location"));
+						bike.setManufactureDate(rs.getDate("manufactureDate").toLocalDate());
+						bikeList.add(bike);
 					}
 				}
 			}
 		} catch (SQLException ex) {
 			throw new DAOException(ex.getMessage());
 		}
-		return true;
+		return bikeList;
 	}
 }
