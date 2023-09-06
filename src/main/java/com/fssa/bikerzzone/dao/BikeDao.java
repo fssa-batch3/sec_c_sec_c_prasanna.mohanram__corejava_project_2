@@ -11,7 +11,6 @@ import java.util.List;
 import com.fssa.bikerzzone.exceptions.DAOException;
 import com.fssa.bikerzzone.logger.Logger;
 import com.fssa.bikerzzone.model.Bike;
-import com.fssa.bikerzzone.validator.BikeValidator;
 
 /**
  * This class provides methods for interacting with the 'bike' table in the
