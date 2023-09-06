@@ -24,10 +24,6 @@ public class ConnectionUtil {
 		String userName;
 		String passWord;
 
-//		url = "jdbc:mysql://localhost:3306/bikerzzone";
-//		userName = "root";
-//		passWord = "123456";
-
 		url = System.getenv("DATABASE_HOST");
 		userName = System.getenv("DATABASE_USERNAME");
 		passWord = System.getenv("DATABASE_PASSWORD");
@@ -41,8 +37,7 @@ public class ConnectionUtil {
 			Logger.info("Connection created");
 		} catch (Exception e) {
 			// Handle any exceptions that occur during connection establishment
-			System.out.println(e.getMessage());
-//			e.getMessage();
+			Logger.info(e.getMessage());
 		}
 		return con;
 	}
