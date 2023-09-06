@@ -100,6 +100,39 @@ public class BikeDao {
 		return bike;
 	}
 
+	public static Bike findBikesById(int id) throws DAOException {
+
+		Bike bike = null;
+
+		try (Connection connection = ConnectionUtil.getConnection()) {
+			String query = "SELECT * FROM bike WHERE id = ?";
+
+			try (PreparedStatement pst = connection.prepareStatement(query)) {
+
+				pst.setInt(1, id);
+
+				try (ResultSet rs = pst.executeQuery()) {
+
+					if (rs.next()) {
+
+						Logger.info(ID_LABEL + rs.getInt(1));
+						Logger.info(BRAND_LABEL + rs.getString(2));
+						Logger.info(MODEL_LABEL + rs.getString(3));
+						Logger.info(PRICE_LABEL + rs.getDouble(4));
+						Logger.info(OWNERSHIP_LABEL + rs.getString(5));
+						Logger.info(LOCATION_LABEL + rs.getString(6));
+						Logger.info(MANUFACTURE_DATE_LABEL + rs.getDate("manufactureDate").toLocalDate());
+
+					}
+				}
+			}
+		} catch (SQLException ex) {
+			throw new DAOException(ex);
+
+		}
+		return bike;
+	}
+
 	/**
 	 * Reads and logs information about all bikes in the 'bike' table.
 	 *
